@@ -13,48 +13,40 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves. This is your 30 second elevator pitch for your module. Consider including OS/Puppet version it works with.       
+A Puppet module which manages the Dante socks server.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
-
-If your module has a range of functionality (installation, configuration, management, etc.) this is the time to mention it.
+This module manges the dante socks server on RHEL 7 systems. Currently the module only supports basic funtionality, but I wrote it with extensibility mind. You can use hiera to configure the settings, or just set the class parameters in puppet DSL.
 
 ## Setup
 
 ### What dante affects
 
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
+* installs the dante-server package.
+* creates a sockd.conf file from an erb template.
+* starts the sockd service.
 
 ### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
+You will need a working dante-server package.
 
 ### Beginning with dante
 
-The very basic steps needed for a user to get the module up and running. 
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you may wish to include an additional section here: Upgrading (For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+Just look at the dante class parameters. The defaults should get you up and running.
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
+Unfortunately you have to look at the parameters of the dante class.
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module. This section should include all of the under-the-hood workings of your module so people know what the module is touching on their system but don't need to mess with things. (We are working on automating this section!)
+For now you have to look at the source code and the sockd.conf erb template.
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+RHEL 7 only, but porting should be easy.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+Please try to match the coding style of the module, even it's not your thing. Try to not break compatibility for existing users and if you have to, ther should be a good reason. This module should work with and without hiera.

@@ -1,0 +1,25 @@
+## THIS FILE IS MANAGED BY PUPPET.
+## Your changes won't last :-)
+#
+internal: <%= scope.lookupvar('::dante::internal_addr') %> port = <%= scope.lookupvar('::dante::listen_port') %>
+external: <%= scope.lookupvar('::dante::external_addr') %>
+logoutput: <%= scope.lookupvar('::dante::logoutput') %>
+user.unprivileged: <%= scope.lookupvar('::dante::unpriv_user') %>
+clientmethod: none
+socksmethod: none
+
+#Client Rules
+<% scope.lookupvar('::dante::client_rules').each do |r| -%>
+<%= "client #{r["mode"]} {" %>
+<%= "  from: #{r["from"]} to: #{r["to"]}" %>
+<%= "  log: #{r["log"]}" %>
+<%= "}" %>
+<% end -%>
+
+#Socks Rules
+<% scope.lookupvar('::dante::socks_rules').each do |r| -%>
+<%= "socks #{r["mode"]} {" %>
+<%= "  from: #{r["from"]} to: #{r["to"]}" %>
+<%= "  log: #{r["log"]}" %>
+<%= "}" %>
+<% end -%>
