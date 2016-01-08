@@ -18,6 +18,7 @@ class dante (
   $external_addr       = $::ipaddress,
   $logoutput           = $::dante::params::logoutput,
   $unpriv_user         = $::dante::params::unpriv_user,
+  $socks_routes        = [],
   $client_rules        = [{
       mode     => 'pass',
       from     => "${::ipaddress}/32",
@@ -58,6 +59,7 @@ class dante (
   validate_string($external_addr)
   validate_string($logoutput)
   validate_string($unpriv_user)
+  validate_array($socks_routes)
   validate_array($client_rules)
   validate_array($socks_rules)
 

@@ -8,6 +8,14 @@ user.unprivileged: <%= scope.lookupvar('::dante::unpriv_user') %>
 clientmethod: none
 socksmethod: none
 
+#Routes
+<% scope.lookupvar('::dante::socks_routes').each do |r| -%>
+<%= "route {" %>
+<%= "  from: #{r["from"]} to: #{r["to"]} via: #{r["via"]}" %>
+<%= "  proxyprotocol: #{r["proxyprotocol"]}" %>
+<%= "}" %>
+<% end -%>
+
 #Client Rules
 <% scope.lookupvar('::dante::client_rules').each do |r| -%>
 <%= "client #{r["mode"]} {" %>
