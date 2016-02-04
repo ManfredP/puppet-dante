@@ -64,7 +64,7 @@ class dante (
   validate_array($socks_rules)
 
   class { '::dante::install': } ->
-  class { '::dante::config': } ~>
+  class { '::dante::config': } ->
   class { '::dante::service': } ->
   Class['::dante']
 }
