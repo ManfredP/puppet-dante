@@ -12,7 +12,9 @@ socksmethod: none
 <% scope.lookupvar('::dante::socks_routes').each do |r| -%>
 <%= "route {" %>
 <%= "  from: #{r["from"]} to: #{r["to"]} via: #{r["via"]}" %>
+<% if r["via"] != 'direct' -%>
 <%= "  proxyprotocol: #{r["proxyprotocol"]}" %>
+<% end -%>
 <%= "}" %>
 <% end -%>
 
