@@ -20,13 +20,12 @@ describe 'dante' do
       it {is_expected.to contain_Class('dante') }
       it {is_expected.to contain_Class('dante::params')}
       it {is_expected.to contain_Class('dante::install').that_comes_before('dante::config')}
-      it {is_expected.to contain_Class('dante::config')}
+      it {is_expected.to contain_Class('dante::config').that_notifies('dante::service')}
       it {is_expected.to contain_Class('dante::service')}
 
       it {is_expected.to contain_Package('dante-server').with_ensure('present')}
       it {is_expected.to contain_File('/etc/sockd.conf')}
-      it {is_expected.to contain_Service('sockd').that_comes_before('Exec[dante-reload]')}
-      it {is_expected.to contain_Exec('dante-reload').that_subscribes_to('File[/etc/sockd.conf]')}
+      it {is_expected.to contain_Service('sockd')}
     end
   end
 

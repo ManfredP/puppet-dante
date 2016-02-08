@@ -10,6 +10,7 @@
 class dante (
   $package_name        = $::dante::params::package_name,
   $service_name        = $::dante::params::service_name,
+  $reload_cmd          = $::dante::params::reload_cmd,
   $cfg_tmpl_sockd_conf = 'dante/sockd.conf.erb',
   $sockd_cmd           = $::dante::params::sockd_cmd,
   $config_file         = $::dante::params::config_file,
@@ -64,7 +65,7 @@ class dante (
   validate_array($socks_rules)
 
   class { '::dante::install': } ->
-  class { '::dante::config': } ->
+  class { '::dante::config': } ~>
   class { '::dante::service': } ->
   Class['::dante']
 }

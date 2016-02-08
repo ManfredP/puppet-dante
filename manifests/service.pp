@@ -10,11 +10,6 @@ class dante::service {
     enable     => true,
     hasstatus  => true,
     hasrestart => true,
-  } ->
-  exec { 'dante-reload':
-    command     => "systemctl reload ${::dante::service_name}",
-    path        => ['/bin', '/usr/bin'],
-    refreshonly => true,
-    subscribe   => File[$::dante::config_file],
+    restart    => $::dante::reload_cmd,
   }
 }

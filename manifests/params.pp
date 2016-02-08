@@ -9,6 +9,7 @@ class dante::params {
       if 0 + $::operatingsystemmajrelease == 7 {
         $package_name = 'dante-server'
         $service_name = 'sockd'
+        $reload_cmd   = '/usr/bin/systemctl reload sockd'
         $sockd_cmd    = '/usr/sbin/sockd'
         $config_file  = '/etc/sockd.conf'
         $logoutput    = 'stderr'
