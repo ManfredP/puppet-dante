@@ -1,6 +1,6 @@
 {
   "name": "oss-dante",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Manfred Pusch",
   "summary": "A puppet module to manage the dante socks server.",
   "license": "Apache-2.0",
