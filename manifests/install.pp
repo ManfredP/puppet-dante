@@ -4,7 +4,7 @@
 #
 class dante::install {
 
-  package { $::dante::package_name:
+  package {$::dante::package_name:
     ensure => present,
   }
 }

@@ -4,6 +4,7 @@
 internal: <%= scope.lookupvar('::dante::internal_addr') %> port = <%= scope.lookupvar('::dante::listen_port') %>
 external: <%= scope.lookupvar('::dante::external_addr') %>
 logoutput: <%= scope.lookupvar('::dante::logoutput') %>
+errorlog: <%= scope.lookupvar('::dante::errorlog') %>
 user.unprivileged: <%= scope.lookupvar('::dante::unpriv_user') %>
 clientmethod: none
 socksmethod: none

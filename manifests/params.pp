@@ -12,7 +12,8 @@ class dante::params {
         $reload_cmd   = '/usr/bin/systemctl reload sockd'
         $sockd_cmd    = '/usr/sbin/sockd'
         $config_file  = '/etc/sockd.conf'
-        $logoutput    = 'stderr'
+        $logoutput    = "/var/log/sockd.log"
+        $errorlog     = 'stderr'
         $unpriv_user  = 'nobody'
       } else {
         fail("${::operatingsystem} ${::operatingsystemmajrelease} not supported")

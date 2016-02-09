@@ -18,27 +18,32 @@ class dante (
   $listen_port         = 1080,
   $external_addr       = $::ipaddress,
   $logoutput           = $::dante::params::logoutput,
+  $errorlog            = $::dante::params::errorlog,
   $unpriv_user         = $::dante::params::unpriv_user,
   $socks_routes        = [],
-  $client_rules        = [{
+  $client_rules        = [
+    {
       mode     => 'pass',
       from     => "${::ipaddress}/32",
       to       => '0/0',
       log      => 'error',
-    },{
+    },
+    {
       mode     => 'block',
       from     => '0/0',
       to       => '0/0',
       log      => 'connect error',
     },
   ],
-  $socks_rules        = [{
+  $socks_rules        = [
+    {
       mode     => 'pass',
       from     => "${::ipaddress}/32",
       to       => '0/0',
       protocol => 'tcp',
       log      => 'error connect disconnect',
-    },{
+    },
+    {
       mode     => 'block',
       from     => '0/0',
       to       => '0/0',
@@ -59,6 +64,7 @@ class dante (
   #validate_ip_address($external_addr)
   validate_string($external_addr)
   validate_string($logoutput)
+  validate_string($errorlog)
   validate_string($unpriv_user)
   validate_array($socks_routes)
   validate_array($client_rules)
