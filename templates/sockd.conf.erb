@@ -11,12 +11,12 @@ socksmethod: none
 
 #Routes
 <% scope.lookupvar('::dante::socks_routes').each do |r| -%>
-<%= "route {" %>
+route {
 <%= "  from: #{r["from"]} to: #{r["to"]} via: #{r["via"]}" %>
 <% if r["via"] != 'direct' -%>
 <%= "  proxyprotocol: #{r["proxyprotocol"]}" %>
 <% end -%>
-<%= "}" %>
+}
 <% end -%>
 
 #Client Rules
@@ -24,13 +24,17 @@ socksmethod: none
 <%= "client #{r["mode"]} {" %>
 <%= "  from: #{r["from"]} to: #{r["to"]}" %>
 <%= "  log: #{r["log"]}" %>
-<%= "}" %>
+}
 <% end -%>
 
 #Socks Rules
 <% scope.lookupvar('::dante::socks_rules').each do |r| -%>
 <%= "socks #{r["mode"]} {" %>
-<%= "  from: #{r["from"]} to: #{r["to"]}" %>
+<%= "  from: #{r["from"]} to: #{r["to"]}" -%>
+<% if r["toport"] != nil -%>
+<%= " port: #{r["toport"]}" -%>
+<% end -%>
+
 <%= "  log: #{r["log"]}" %>
-<%= "}" %>
+}
 <% end -%>
