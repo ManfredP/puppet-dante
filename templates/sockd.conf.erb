@@ -32,7 +32,7 @@ route {
 <%= "socks #{r["mode"]} {" %>
 <%= "  from: #{r["from"]} to: #{r["to"]}" -%>
 <% if r["toport"] != nil -%>
-<%= " port: #{r["toport"]}" -%>
+<%= " port #{r["toport"]}" -%>
 <% end -%>
 
 <%= "  log: #{r["log"]}" %>
