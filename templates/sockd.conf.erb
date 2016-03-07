@@ -39,6 +39,9 @@ route {
 <%= " port #{r["toport"]}" -%>
 <% end -%>
 
+<% if r["protocol"] != nil -%>
+<%= "  protocol: #{r["protocol"]}" %>
+<% end -%>
 <%= "  log: #{r["log"]}" %>
 }
 <% end -%>
