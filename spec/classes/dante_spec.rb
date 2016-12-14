@@ -9,6 +9,7 @@ describe 'dante' do
       :operatingsystemrelease    => '7.0.0',
       :operatingsystemmajrelease => '7',
       :architecture              => 'x86_64',
+      :ipaddress                 => '10.0.0.1',
       :concat_basedir            => '/tmp',
     }}
 
