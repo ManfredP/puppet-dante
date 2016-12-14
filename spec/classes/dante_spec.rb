@@ -20,8 +20,8 @@ describe 'dante' do
 
       it {is_expected.to contain_Class('dante') }
       it {is_expected.to contain_Class('dante::params')}
-      it {is_expected.to contain_Class('dante::install').that_comes_before('dante::config')}
-      it {is_expected.to contain_Class('dante::config').that_notifies('dante::service')}
+      it {is_expected.to contain_Class('dante::install').that_comes_before('Class[dante::config]')}
+      it {is_expected.to contain_Class('dante::config').that_notifies('Class[dante::service]')}
       it {is_expected.to contain_Class('dante::service')}
 
       it {is_expected.to contain_Package('dante-server').with_ensure('present')}
